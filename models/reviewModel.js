@@ -63,7 +63,7 @@ reviewSchema.statics.calcAverageRatings = async function (tourId) {
     },
   ]);
 
-  console.log(stats);
+  // console.log(stats);
 
   if (stats.length > 0) {
     await Tour.findByIdAndUpdate(tourId, {
@@ -87,15 +87,13 @@ reviewSchema.post('save', function () {
 // findByIdAndDelete
 reviewSchema.pre(/^findOneAnd/, async function (next) {
   this.r = await this.findOne().clone();
-  console.log('Varun', this.r);
 
   next();
 });
 
 reviewSchema.post(/^findOneAnd/, async function () {
   // await this.findOne() doesnot work here
-  console.log(this.r);
-  console.log(this.r.tour);
+
   await this.r.constructor.calcAverageRatings(this.r.tour);
 });
 

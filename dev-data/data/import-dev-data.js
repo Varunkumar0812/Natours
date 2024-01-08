@@ -9,7 +9,7 @@ dotenv.config({
   path: 'C:/Users/tvaru/OneDrive/Documents/Studies/College Studies/Semester V/Node - Course/complete-node-bootcamp/4-natours/starter/config.env',
 });
 
-console.log(process.env);
+// console.log(process.env);
 
 const DB = process.env.DATABASE.replace(
   '<PASSWORD>',

@@ -3,8 +3,8 @@ const app = require('./app');
 const mongoose = require('mongoose');
 
 process.on('uncaughtException', (err) => {
-  console.log('UNCAUGHT EXCEPTION! Shutting down');
-  console.log(err.name, err.message);
+  // console.log('UNCAUGHT EXCEPTION! Shutting down');
+  // console.log(err.name, err.message);
   process.exit(1);
 });
 
@@ -16,7 +16,7 @@ const DB = process.env.DATABASE.replace(
 );
 
 mongoose.connect(DB, {}).then((con) => {
-  console.log('DB Connection Successful');
+  // console.log('DB Connection Successful');
 });
 
 const port = process.env.PORT;
@@ -26,7 +26,7 @@ const server = app.listen(port, () => {
 
 // Unhandled Rejection of Promises
 process.on('unhandledRejection', (err) => {
-  console.log(err.name, err.message);
+  // console.log(err.name, err.message);
   console.log('UNHANDLED REJECTION! Shutting down');
   server.close(() => {
     process.exit(1);
